@@ -1,0 +1,39 @@
+# ─── Data files (too large for GitHub) ───────
+data/raw/*.csv
+data/processed/*.csv
+outputs/scorecard_output.csv
+outputs/iv_summary.csv
+dashboard/powerbi_data/*.csv
+
+# ─── Keep directory structure ────────────────
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!outputs/plots/.gitkeep
+
+# ─── Python ──────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ─── Jupyter ─────────────────────────────────
+.ipynb_checkpoints/
+
+# ─── IDE ─────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── OS ──────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
