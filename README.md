@@ -3,6 +3,7 @@
   <img src="https://img.shields.io/badge/Scikit--Learn-1.5-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-Learn">
   <img src="https://img.shields.io/badge/Power_BI-Dashboard-F2C811?style=for-the-badge&logo=power-bi&logoColor=black" alt="Power BI">
   <img src="https://img.shields.io/badge/PostgreSQL-SQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/Pandas-2.2-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas">
   <img src="https://img.shields.io/badge/Status-Complete-27ae60?style=for-the-badge" alt="Status">
 </p>
 
@@ -15,37 +16,13 @@
   featuring WoE/IV methodology, PDO-based score scaling, and comprehensive model evaluation.
 </p>
 
----
-
-## 📋 Table of Contents
-
-- [Overview](#-overview)
-- [Key Results](#-key-results)
-- [Architecture](#-architecture)
-- [Project Structure](#-project-structure)
-- [Pipeline Steps](#-pipeline-steps)
-- [Model Evaluation](#-model-evaluation)
-- [Power BI Dashboard](#-power-bi-dashboard)
-- [SQL Analytics](#-sql-analytics)
-- [Setup & Run](#-setup--run)
-- [Methodology](#-methodology)
-- [Tech Stack](#-tech-stack)
-- [License](#-license)
-
----
-
-## 🎯 Overview
-
-This project implements the **full lifecycle of credit scorecard development** — a core skill in banking, fintech, and consumer lending analytics:
-
-| Stage | What It Does |
-|-------|-------------|
-| **Data Cleaning** | Filters 2.2M raw records → 1.3M usable loans, handles missing values |
-| **Feature Engineering** | Creates 27 derived features (payment-to-income, delinquency flags, log transforms) |
-| **WoE/IV Analysis** | Optimal binning with IV-based feature selection (retains IV > 0.10) |
-| **Scorecard Model** | Logistic Regression with PDO scaling to a 300–900 credit score range |
-| **Evaluation** | KS, Gini, ROC-AUC, and full decile analysis with diagnostic charts |
-| **Dashboard** | Interactive Power BI dashboard for portfolio risk visualization |
+<p align="center">
+  <a href="#-key-results">Key Results</a> •
+  <a href="#-pipeline-steps">Pipeline</a> •
+  <a href="#-model-evaluation">Evaluation</a> •
+  <a href="#-power-bi-dashboard">Dashboard</a> •
+  <a href="#-setup--run">Get Started</a>
+</p>
 
 ---
 
@@ -69,6 +46,21 @@ This project implements the **full lifecycle of credit scorecard development** �
 | 🟡 Near Prime | 660 – 719 | 201,394 | 15.4% | 0.19% |
 | 🟠 Subprime | 600 – 659 | 88,267 | 6.8% | 1.44% |
 | 🔴 Deep Subprime | 300 – 599 | 616,232 | 47.3% | 42.16% |
+
+---
+
+## 🎯 Overview
+
+This project implements the **full lifecycle of credit scorecard development** — a core skill in banking, fintech, and consumer lending analytics:
+
+| Stage | What It Does |
+|-------|-------------|
+| **Data Cleaning** | Filters 2.2M raw records → 1.3M usable loans, handles missing values |
+| **Feature Engineering** | Creates 27 derived features (payment-to-income, delinquency flags, log transforms) |
+| **WoE/IV Analysis** | Optimal binning with IV-based feature selection (retains IV > 0.10) |
+| **Scorecard Model** | Logistic Regression with PDO scaling to a 300–900 credit score range |
+| **Evaluation** | KS, Gini, ROC-AUC, and full decile analysis with diagnostic charts |
+| **Dashboard** | Interactive Power BI dashboard for portfolio risk visualization |
 
 ---
 
@@ -113,7 +105,7 @@ credit-risk-scorecard/
 │
 ├── 📂 notebooks/                     # Jupyter notebooks (EDA + exploration)
 ├── 📂 outputs/plots/                 # Generated diagnostic charts
-├── 📂 assets/                        # README images
+├── 📂 assets/                        # README images & dashboard screenshots
 │
 ├── config.py                         # Centralized configuration
 ├── main.py                           # Single entry point
@@ -209,29 +201,30 @@ Generates three diagnostic plots and computes industry-standard metrics:
 
 Interactive dashboard built in Power BI Desktop for portfolio risk monitoring:
 
-<!-- 
-📌 TO ADD YOUR DASHBOARD SCREENSHOTS:
-1. Open Power BI → File → Export → Export as PDF or take screenshots
-2. Save as PNG to the assets/ folder (e.g., assets/dashboard_page1.png)
-3. Uncomment the image tags below and update filenames
--->
+### Page 1 — Executive Summary
+<p align="center">
+  <img src="assets/dashboard_overview.png" alt="Dashboard - Executive Summary" width="95%">
+</p>
 
-<table>
-<tr>
-<td width="50%">
+### Page 2 — Risk Tier Deep Dive
+<p align="center">
+  <img src="assets/dashboard_risk.png" alt="Dashboard - Risk Tier Analysis" width="95%">
+</p>
 
-### Executive Summary
-<img src="assets/dashboard_overview.png" alt="Dashboard - Executive Summary" width="100%">
+### Page 3 — Score Distribution & Model Performance
+<p align="center">
+  <img src="assets/dashboard_score_distribution.png" alt="Dashboard - Score Distribution" width="95%">
+</p>
 
-</td>
-<td width="50%">
+### Page 4 — Grade & Segment Analysis
+<p align="center">
+  <img src="assets/dashboard_grade_analysis.png" alt="Dashboard - Grade Analysis" width="95%">
+</p>
 
-### Risk Analysis
-<img src="assets/dashboard_risk.png" alt="Dashboard - Risk Analysis" width="100%">
-
-</td>
-</tr>
-</table>
+### Page 5 — Feature Importance & WoE Analysis
+<p align="center">
+  <img src="assets/dashboard_feature_importance.png" alt="Dashboard - Feature Importance" width="95%">
+</p>
 
 **Dashboard Features:**
 - 🎯 **KPI Cards** — Total loans, default rate, average score, approval rate
@@ -240,6 +233,7 @@ Interactive dashboard built in Power BI Desktop for portfolio risk monitoring:
 - 📉 **Decile Analysis** — Bad rate by decile with cumulative capture line
 - 📋 **Grade Analysis** — Default rate breakdown by loan grade (A–G)
 - 🏠 **Segment Analysis** — Risk by home ownership, employment, income band
+- 🔬 **Feature Importance** — IV-based feature ranking with WoE transformation visuals
 
 > **Dashboard file:** [`dashboard/credit-risk-scorecard.pbix`](dashboard/credit-risk-scorecard.pbix) — open with Power BI Desktop
 
@@ -257,7 +251,7 @@ Production-ready SQL scripts for database integration:
 **`sql/analysis_queries.sql`** — 5 analytical queries:
 
 | # | Query | Purpose |
-|---|-------|---------|
+|---|-------|---------| 
 | 1 | Default Rate by Income Band | Segment risk across income buckets |
 | 2 | Default Rate by Loan Purpose | Identify high-risk loan purposes |
 | 3 | Avg Credit Score by Employment Length | Score vs tenure analysis |
@@ -339,17 +333,30 @@ Score = Base_Score + PDO × log₂(odds / Base_Odds)
 
 ---
 
-## 🛠 Tech Stack
+## 🛠 Technology Stack
 
-| Category | Tools |
-|----------|-------|
+| Component | Technology |
+|-----------|-----------|
 | **Language** | Python 3.10+ |
-| **ML / Stats** | Scikit-Learn, OptBinning, SciPy |
-| **Data** | Pandas, NumPy |
+| **ML / Stats** | Scikit-Learn 1.5, OptBinning, SciPy |
+| **Data** | Pandas 2.2, NumPy |
 | **Visualization** | Matplotlib, Seaborn |
 | **Dashboard** | Power BI Desktop |
 | **Database** | PostgreSQL (schema + queries) |
 | **Notebooks** | Jupyter |
+
+---
+
+## Outputs
+
+| Output | Location |
+|--------|----------|
+| Cleaned dataset | `data/processed/` |
+| Scored dataset (all scores + tiers) | `outputs/scorecard_output.csv` |
+| IV Summary | `outputs/iv_summary.csv` |
+| Diagnostic plots (ROC, KS, Decile) | `outputs/plots/` |
+| Power BI data exports | `dashboard/powerbi_data/` |
+| SQL schema & queries | `sql/` |
 
 ---
 
@@ -362,4 +369,9 @@ This project is for **educational and portfolio purposes**. The Lending Club dat
 <p align="center">
   <b>Built for a Data Analyst Portfolio</b><br>
   <sub>Demonstrating: Python · SQL · Power BI · Statistical Modeling · Credit Risk Domain Knowledge</sub>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Made_with-❤️-e74c3c?style=flat-square" alt="Made with love">
+  <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=flat-square" alt="PRs Welcome">
 </p>
