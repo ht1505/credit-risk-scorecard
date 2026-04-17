@@ -17,11 +17,47 @@
 
 <p align="center">
   <a href="#-key-results">Key Results</a> •
+  <a href="#-new-here-start-in-2-minutes">Start Here</a> •
+  <a href="#-project-tour-for-non-technical-viewers">Project Tour</a> •
   <a href="#-pipeline-steps">Pipeline</a> •
   <a href="#-model-evaluation">Evaluation</a> •
   <a href="#-power-bi-dashboard">Dashboard</a> •
   <a href="#-setup--run">Get Started</a>
 </p>
+
+---
+
+## ✅ New Here? Start in 2 Minutes
+
+If you are just reviewing this project (and do not want to run code yet), follow this path:
+
+1. Open **this README** and scan **Key Results**.
+2. View dashboard screenshots in `outputs/plots/`.
+3. Open `outputs/scorecard_output.csv` to see the final scored dataset.
+4. Open `dashboard/credit-risk-scorecard.pbix` in Power BI Desktop (optional).
+5. Skim `main.py` to see the full pipeline orchestrated in one file.
+
+You can understand what this project delivers without any setup.
+
+---
+
+## 🧭 Project Tour For Non-Technical Viewers
+
+Think of the project in 3 simple layers:
+
+| Layer | Folder | What You Should Look At |
+|------|--------|--------------------------|
+| **Results (what you care about first)** | `outputs/` | Scores, plots, and business metrics |
+| **Dashboard (visual story)** | `dashboard/` | Power BI file + pre-aggregated CSVs |
+| **Code (how it was built)** | `src/` + `main.py` | Reusable modules and end-to-end pipeline |
+
+Recommended browsing order:
+
+1. `outputs/plots/dashboard_overview.png`
+2. `outputs/plots/roc_curve.png`
+3. `outputs/scorecard_output.csv`
+4. `main.py`
+5. `src/` modules (if you want technical depth)
 
 ---
 
@@ -265,6 +301,16 @@ Production-ready SQL scripts for database integration:
 
 ## 🚀 Setup & Run
 
+### Fastest Way (3 Commands)
+
+```bash
+pip install -r requirements.txt
+python main.py
+python dashboard/generate_powerbi_data.py
+```
+
+This is enough to reproduce the pipeline outputs and dashboard data.
+
 ### Prerequisites
 - Python 3.10+
 - Power BI Desktop (for dashboard)
@@ -303,6 +349,12 @@ python dashboard/generate_powerbi_data.py
 ```
 
 Pre-computes 8 summary tables — load into Power BI for instant dashboard creation.
+
+### What To Open After Running
+
+1. `outputs/scorecard_output.csv` for final per-loan scores and risk tiers
+2. `outputs/plots/` for model diagnostics and dashboard screenshots
+3. `dashboard/powerbi_data/` for Power BI import tables
 
 ---
 
