@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Status-Complete-27ae60?style=for-the-badge" alt="Status">
 </p>
 
-<h1 align="center">🏦 Credit Risk Scorecard</h1>
+<h1 align="center">Credit Risk Scorecard</h1>
 
 <p align="center">
   <b>End-to-end credit risk scoring pipeline — from raw data to interactive Power BI dashboard</b>
@@ -27,7 +27,7 @@
 
 ---
 
-## ✅ New Here? Start in 2 Minutes
+## New Here? Start in 2 Minutes
 
 If you are just reviewing this project (and do not want to run code yet), follow this path:
 
@@ -41,7 +41,7 @@ You can understand what this project delivers without any setup.
 
 ---
 
-## 🧭 Project Tour For Non-Technical Viewers
+## Project Tour For Non-Technical Viewers
 
 Think of the project in 3 simple layers:
 
@@ -61,7 +61,7 @@ Recommended browsing order:
 
 ---
 
-## 📊 Key Results
+## Key Results
 
 <table>
   <tr>
@@ -76,15 +76,15 @@ Recommended browsing order:
 
 | Tier | Score Range | Count | Share | Default Rate |
 |------|:----------:|------:|------:|-------------:|
-| 🟢 Super Prime | 800 – 900 | 62,811 | 4.8% | 0.02% |
-| 🔵 Prime | 720 – 799 | 334,903 | 25.7% | 0.06% |
-| 🟡 Near Prime | 660 – 719 | 201,394 | 15.4% | 0.19% |
-| 🟠 Subprime | 600 – 659 | 88,267 | 6.8% | 1.44% |
-| 🔴 Deep Subprime | 300 – 599 | 616,232 | 47.3% | 42.16% |
+| Super Prime | 800 – 900 | 62,811 | 4.8% | 0.02% |
+| Prime | 720 – 799 | 334,903 | 25.7% | 0.06% |
+| Near Prime | 660 – 719 | 201,394 | 15.4% | 0.19% |
+| Subprime | 600 – 659 | 88,267 | 6.8% | 1.44% |
+| Deep Subprime | 300 – 599 | 616,232 | 47.3% | 42.16% |
 
 ---
 
-## 🎯 Overview
+## Overview
 
 This project implements the **full lifecycle of credit scorecard development** — a core skill in banking, fintech, and consumer lending analytics:
 
@@ -99,7 +99,7 @@ This project implements the **full lifecycle of credit scorecard development** �
 
 ---
 
-## 🏗 Architecture
+## Architecture
 
 ```
 ┌─────────────┐     ┌──────────────────┐     ┌────────────┐     ┌────────────┐     ┌─────────────┐
@@ -117,7 +117,7 @@ This project implements the **full lifecycle of credit scorecard development** �
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 credit-risk-scorecard/
@@ -157,7 +157,7 @@ credit-risk-scorecard/
 
 ---
 
-## ⚙️ Pipeline Steps
+## Pipeline Steps
 
 ### Step 1 — Data Loading & Cleaning
 `src/data_loader.py`
@@ -206,7 +206,7 @@ Generates three diagnostic plots and computes industry-standard metrics.
 
 ---
 
-## 📈 Model Evaluation
+## Model Evaluation
 
 <table>
 <tr>
@@ -237,7 +237,7 @@ Generates three diagnostic plots and computes industry-standard metrics.
 
 ---
 
-## 📊 Power BI Dashboard
+## Power BI Dashboard
 
 Interactive dashboard built in Power BI Desktop for portfolio risk monitoring.
 
@@ -267,18 +267,18 @@ Interactive dashboard built in Power BI Desktop for portfolio risk monitoring.
 </p>
 
 **Dashboard Features:**
-- 🎯 **KPI Cards** — Total loans, default rate, average score, approval rate
-- 🍩 **Risk Tier Distribution** — Donut chart with color-coded tiers
-- 📊 **Score Distribution** — Histogram of credit scores across the portfolio
-- 📉 **Decile Analysis** — Bad rate by decile with cumulative capture line
-- 📋 **Grade Analysis** — Default rate breakdown by loan grade (A–G)
-- 🏠 **Segment Analysis** — Risk by home ownership, employment, income band
+- **KPI Cards** — Total loans, default rate, average score, approval rate
+- **Risk Tier Distribution** — Donut chart with color-coded tiers
+- **Score Distribution** — Histogram of credit scores across the portfolio
+- **Decile Analysis** — Bad rate by decile with cumulative capture line
+- **Grade Analysis** — Default rate breakdown by loan grade (A–G)
+- **Segment Analysis** — Risk by home ownership, employment, income band
 
 > **Dashboard file:** [`dashboard/credit-risk-scorecard.pbix`](dashboard/credit-risk-scorecard.pbix) — open with Power BI Desktop
 
 ---
 
-## 🗄 SQL Analytics
+## SQL Analytics
 
 Production-ready SQL scripts for database integration:
 
@@ -299,7 +299,7 @@ Production-ready SQL scripts for database integration:
 
 ---
 
-## 🚀 Setup & Run
+## Setup & Run
 
 ### Fastest Way (3 Commands)
 
@@ -358,7 +358,7 @@ Pre-computes 8 summary tables — load into Power BI for instant dashboard creat
 
 ---
 
-## 📐 Methodology
+## Methodology
 
 ### Weight of Evidence (WoE)
 ```
@@ -388,7 +388,7 @@ Score = Base_Score + PDO × log₂(odds / Base_Odds)
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Category | Tools |
 |----------|-------|
@@ -402,7 +402,7 @@ Score = Base_Score + PDO × log₂(odds / Base_Odds)
 
 ---
 
-## 📜 License
+## License
 
 This project is for **educational and portfolio purposes**. The Lending Club dataset is subject to its own [terms of use](https://www.kaggle.com/datasets/adarshsng/lending-club-loan-data-csv).
 
@@ -414,6 +414,6 @@ This project is for **educational and portfolio purposes**. The Lending Club dat
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Made_with-❤️-e74c3c?style=flat-square" alt="Made with love">
+  <img src="https://img.shields.io/badge/Made_with-Love-e74c3c?style=flat-square" alt="Made with love">
   <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=flat-square" alt="PRs Welcome">
 </p>
