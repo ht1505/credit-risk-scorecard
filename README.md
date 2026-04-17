@@ -3,7 +3,6 @@
   <img src="https://img.shields.io/badge/Scikit--Learn-1.5-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-Learn">
   <img src="https://img.shields.io/badge/Power_BI-Dashboard-F2C811?style=for-the-badge&logo=power-bi&logoColor=black" alt="Power BI">
   <img src="https://img.shields.io/badge/PostgreSQL-SQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
-  <img src="https://img.shields.io/badge/Pandas-2.2-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas">
   <img src="https://img.shields.io/badge/Status-Complete-27ae60?style=for-the-badge" alt="Status">
 </p>
 
@@ -87,25 +86,30 @@ This project implements the **full lifecycle of credit scorecard development** �
 ```
 credit-risk-scorecard/
 │
-├── 📂 src/                           # Core pipeline modules
+├── src/                              # Core pipeline modules
 │   ├── data_loader.py                #   Step 1: Load, clean, impute
 │   ├── feature_engineering.py        #   Step 2: Derive features
 │   ├── woe_iv.py                     #   Step 3: WoE transform + IV filter
 │   ├── scorecard.py                  #   Step 4: Logistic regression + PDO scoring
 │   └── evaluation.py                 #   Step 5: KS, Gini, ROC-AUC, decile
 │
-├── 📂 sql/                           # Database integration
+├── sql/                              # Database integration
 │   ├── create_tables.sql             #   PostgreSQL schema with indexes
 │   └── analysis_queries.sql          #   5 analytical queries
 │
-├── 📂 dashboard/                     # Power BI visualization
+├── dashboard/                        # Power BI visualization
 │   ├── credit-risk-scorecard.pbix    #   Power BI dashboard file
 │   ├── generate_powerbi_data.py      #   Auto-generate summary CSVs
 │   └── powerbi_instructions.md       #   Step-by-step build guide
 │
-├── 📂 notebooks/                     # Jupyter notebooks (EDA + exploration)
-├── 📂 outputs/plots/                 # Generated diagnostic charts
-├── 📂 assets/                        # README images & dashboard screenshots
+├── notebooks/                        # Jupyter notebooks (EDA + exploration)
+│
+├── outputs/                          # All generated outputs
+│   └── plots/                        #   Diagnostic charts & dashboard screenshots
+│
+├── data/                             # Dataset directory
+│   ├── raw/                          #   Place loan.csv here
+│   └── processed/                    #   Cleaned data (auto-generated)
 │
 ├── config.py                         # Centralized configuration
 ├── main.py                           # Single entry point
@@ -113,7 +117,7 @@ credit-risk-scorecard/
 └── README.md
 ```
 
-> **Design Principle:** Each pipeline step is an **independent, importable Python module** — no monolithic notebooks, no mega-scripts. This mirrors how production ML pipelines are structured in industry.
+> **Design Principle:** Each pipeline step is an **independent, importable Python module** — no monolithic notebooks, no mega-scripts.
 
 ---
 
@@ -149,7 +153,7 @@ Uses **OptimalBinning** (monotonic constraint programming) to compute WoE for ea
 | `int_rate` | 0.4657 | Strong |
 | `loan_to_income` | 0.1215 | Medium |
 
-> *\*`total_pymnt` and `last_pymnt_amnt` are post-origination features (known only after payments are made). Their high IV confirms this. In a production scorecard, these would be excluded and replaced with application-time variables. They are retained here for demonstration, and the IV table flags them as suspicious per standard methodology.*
+> *\*`total_pymnt` and `last_pymnt_amnt` are post-origination features (known only after payments are made). In a production scorecard, these would be excluded. They are retained here for demonstration.*
 
 ### Step 4 — Scorecard Model & Scoring
 `src/scorecard.py`
@@ -162,7 +166,7 @@ Uses **OptimalBinning** (monotonic constraint programming) to compute WoE for ea
 ### Step 5 — Model Evaluation
 `src/evaluation.py`
 
-Generates three diagnostic plots and computes industry-standard metrics:
+Generates three diagnostic plots and computes industry-standard metrics.
 
 ---
 
@@ -173,13 +177,13 @@ Generates three diagnostic plots and computes industry-standard metrics:
 <td width="50%">
 
 ### ROC Curve (AUC = 0.9508)
-<img src="assets/roc_curve.png" alt="ROC Curve" width="100%">
+<img src="outputs/plots/roc_curve.png" alt="ROC Curve" width="100%">
 
 </td>
 <td width="50%">
 
 ### KS Curve (KS = 0.7518)
-<img src="assets/ks_curve.png" alt="KS Curve" width="100%">
+<img src="outputs/plots/ks_curve.png" alt="KS Curve" width="100%">
 
 </td>
 </tr>
@@ -187,7 +191,7 @@ Generates three diagnostic plots and computes industry-standard metrics:
 <td colspan="2">
 
 ### Decile Analysis — Bad Rate & Cumulative Capture
-<img src="assets/decile_chart.png" alt="Decile Chart" width="100%">
+<img src="outputs/plots/decile_chart.png" alt="Decile Chart" width="100%">
 
 </td>
 </tr>
@@ -199,31 +203,31 @@ Generates three diagnostic plots and computes industry-standard metrics:
 
 ## 📊 Power BI Dashboard
 
-Interactive dashboard built in Power BI Desktop for portfolio risk monitoring:
+Interactive dashboard built in Power BI Desktop for portfolio risk monitoring.
 
-### Page 1 — Executive Summary
+### Executive Summary
 <p align="center">
-  <img src="assets/dashboard_overview.png" alt="Dashboard - Executive Summary" width="95%">
+  <img src="outputs/plots/dashboard_overview.png" alt="Dashboard - Executive Summary" width="95%">
 </p>
 
-### Page 2 — Risk Tier Deep Dive
+### Risk Tier Deep Dive
 <p align="center">
-  <img src="assets/dashboard_risk.png" alt="Dashboard - Risk Tier Analysis" width="95%">
+  <img src="outputs/plots/dashboard_risk.png" alt="Dashboard - Risk Tier Analysis" width="95%">
 </p>
 
-### Page 3 — Score Distribution & Model Performance
+### Score Distribution & Model Performance
 <p align="center">
-  <img src="assets/dashboard_score_distribution.png" alt="Dashboard - Score Distribution" width="95%">
+  <img src="outputs/plots/dashboard_score_distribution.png" alt="Dashboard - Score Distribution" width="95%">
 </p>
 
-### Page 4 — Grade & Segment Analysis
+### Grade & Segment Analysis
 <p align="center">
-  <img src="assets/dashboard_grade_analysis.png" alt="Dashboard - Grade Analysis" width="95%">
+  <img src="outputs/plots/dashboard_grade_analysis.png" alt="Dashboard - Grade Analysis" width="95%">
 </p>
 
-### Page 5 — Feature Importance & WoE Analysis
+### Feature Importance & WoE Analysis
 <p align="center">
-  <img src="assets/dashboard_feature_importance.png" alt="Dashboard - Feature Importance" width="95%">
+  <img src="outputs/plots/dashboard_feature_importance.png" alt="Dashboard - Feature Importance" width="95%">
 </p>
 
 **Dashboard Features:**
@@ -233,7 +237,6 @@ Interactive dashboard built in Power BI Desktop for portfolio risk monitoring:
 - 📉 **Decile Analysis** — Bad rate by decile with cumulative capture line
 - 📋 **Grade Analysis** — Default rate breakdown by loan grade (A–G)
 - 🏠 **Segment Analysis** — Risk by home ownership, employment, income band
-- 🔬 **Feature Importance** — IV-based feature ranking with WoE transformation visuals
 
 > **Dashboard file:** [`dashboard/credit-risk-scorecard.pbix`](dashboard/credit-risk-scorecard.pbix) — open with Power BI Desktop
 
@@ -251,7 +254,7 @@ Production-ready SQL scripts for database integration:
 **`sql/analysis_queries.sql`** — 5 analytical queries:
 
 | # | Query | Purpose |
-|---|-------|---------| 
+|---|-------|---------|
 | 1 | Default Rate by Income Band | Segment risk across income buckets |
 | 2 | Default Rate by Loan Purpose | Identify high-risk loan purposes |
 | 3 | Avg Credit Score by Employment Length | Score vs tenure analysis |
@@ -299,7 +302,7 @@ This runs all 5 steps and outputs:
 python dashboard/generate_powerbi_data.py
 ```
 
-Pre-computes 8 summary tables — load into Power BI for instant dashboard creation with zero DAX needed.
+Pre-computes 8 summary tables — load into Power BI for instant dashboard creation.
 
 ---
 
@@ -333,30 +336,17 @@ Score = Base_Score + PDO × log₂(odds / Base_Odds)
 
 ---
 
-## 🛠 Technology Stack
+## 🛠 Tech Stack
 
-| Component | Technology |
-|-----------|-----------|
+| Category | Tools |
+|----------|-------|
 | **Language** | Python 3.10+ |
-| **ML / Stats** | Scikit-Learn 1.5, OptBinning, SciPy |
-| **Data** | Pandas 2.2, NumPy |
+| **ML / Stats** | Scikit-Learn, OptBinning, SciPy |
+| **Data** | Pandas, NumPy |
 | **Visualization** | Matplotlib, Seaborn |
 | **Dashboard** | Power BI Desktop |
 | **Database** | PostgreSQL (schema + queries) |
 | **Notebooks** | Jupyter |
-
----
-
-## Outputs
-
-| Output | Location |
-|--------|----------|
-| Cleaned dataset | `data/processed/` |
-| Scored dataset (all scores + tiers) | `outputs/scorecard_output.csv` |
-| IV Summary | `outputs/iv_summary.csv` |
-| Diagnostic plots (ROC, KS, Decile) | `outputs/plots/` |
-| Power BI data exports | `dashboard/powerbi_data/` |
-| SQL schema & queries | `sql/` |
 
 ---
 

@@ -5,11 +5,6 @@ outputs/scorecard_output.csv
 outputs/iv_summary.csv
 dashboard/powerbi_data/*.csv
 
-# ─── Keep directory structure ────────────────
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-!outputs/plots/.gitkeep
-
 # ─── Python ──────────────────────────────────
 __pycache__/
 *.pyc
